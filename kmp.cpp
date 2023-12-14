@@ -49,6 +49,7 @@ int main(){
 
         if(j == p.size()){
             pos = i-p.size();
+            break;//for first occurance
         }
     }
 
