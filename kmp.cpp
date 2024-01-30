@@ -26,9 +26,7 @@ vector<int>makeprefixarray(string s){
     return prefix;
 }
 
-int main(){
-    string t="aabaaabaaac";
-    string p="aabaaac";
+int kmp(string t,string p){
     vector<int>prefix=makeprefixarray(p);
    
     int i(0),j(0);
@@ -50,10 +48,17 @@ int main(){
         if(j == p.size()){
             pos = i-p.size();
             break;//for first occurance
-        }
+        }//change as per your need 
     }
+    return pos;
+}
 
-    cout<<"pos = "<<pos<<endl;
+int main(){
+    string t="aabaaabaaac";
+    string p="aabaaac";
+    // vector<int>prefix=makeprefixarray(p);
+   
+    cout<<kmp(t,p)<<endl;
    
     return 0;
 }
