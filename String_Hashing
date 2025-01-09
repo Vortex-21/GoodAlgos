@@ -1,0 +1,20 @@
+class Hash{
+    public:
+    const ll MOD = 1e9 + 7, BASE1 = 5689, BASE2 = 8861;
+
+    vector<pair<ll,ll>>hashes, Pow;
+
+    Hash(string s){
+        hashes.assign(s.size()+1,{0,0});
+        Pow.assign(s.size()+1,{1,1});
+
+        for(ll i=0;i<s.size();i++){
+            hashes[i+1] = {(1ll*BASE1*hashes[i].first + s[i]-'a'+1)%MOD, (1ll*BASE2*hashes[i].second + s[i]-'a'+1)%MOD};
+            Pow[i+1] = {(1ll*Pow[i].first*BASE1)%MOD,(1ll*Pow[i].second*BASE2)%MOD };
+        }
+    }
+    pair<ll,ll>getHash(ll l,ll r){
+        ll len = r-l+1;
+        return {(hashes[r].first - (hashes[l-1].first * (Pow[len].first))%MOD + MOD)%MOD, (hashes[r].second - (hashes[l-1].second * (Pow[len].second)%MOD) + MOD)%MOD};
+    }
+};
