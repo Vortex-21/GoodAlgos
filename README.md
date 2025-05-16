@@ -1,1 +1,1 @@
-Some famous and exceptional Algorithms
+Some famous and useful algorithms and techniques.
